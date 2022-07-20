@@ -19,10 +19,10 @@ function Routes() {
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route exact path="/foods" component={ Foods } />
-        <Route path="/foods/:id" component={ FoodsId } />
+        <Route exact path="/foods/:id" component={ FoodsId } />
         <Route path="/foods/:id/in-progress" component={ FoodsIdProgress } />
         <Route exact path="/drinks" component={ Drinks } />
-        <Route path="/drinks/:id" component={ DrinksId } />
+        <Route exact path="/drinks/:id" component={ DrinksId } />
         <Route path="/drinks/:id/in-progress" component={ DrinksIdProgress } />
         <Route path="/profile" component={ Profile } />
         <Route path="/favorite-recipes" component={ FavoritesRecipes } />
