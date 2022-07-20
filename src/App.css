@@ -111,3 +111,10 @@
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
+.btn-start-recipe {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+}

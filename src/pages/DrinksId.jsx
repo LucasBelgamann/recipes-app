@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import StartRecipe from '../components/StartRecipe';
 import Context from '../context/context';
 
 // import { Container } from './styles';
@@ -87,6 +88,7 @@ function DrinkId() {
           ))}
         </div>
       </div>
+      <StartRecipe />
     </div>
   );
 }
