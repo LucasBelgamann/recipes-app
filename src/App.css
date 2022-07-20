@@ -118,3 +118,7 @@
   position: fixed;
   right: 0;
 }
+
+.share-btn {
+  margin: 2rem;
+}

@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
+import copy from 'clipboard-copy';
 import StartRecipe from '../components/StartRecipe';
 import Context from '../context/context';
+import share from '../images/shareIcon.svg';
 
 // import { Container } from './styles';
 
 function FoodsId() {
   const { setFetchId, fetchId } = useContext(Context);
   const { id } = useParams();
+  const history = useHistory();
+  const [isCopy, setCopy] = useState(false);
 
   const [ingredientsArrayFood, setIngredientsArrayFood] = useState([]);
   const [amountArray, setAmmount] = useState([]);
@@ -48,6 +52,12 @@ function FoodsId() {
     handleFetchIdFood();
     recommendationFetch();
   }, []);
+
+  const handleShare = () => {
+    copy(`http://localhost:3000${history.location.pathname}`);
+    setCopy(true);
+  };
+
   return (
     <div>
       <div>
@@ -92,7 +102,14 @@ function FoodsId() {
           ))}
         </div>
       </div>
-      <button type="button" data-testid="share-btn">Share</button>
+      <button
+        type="button"
+        data-testid="share-btn"
+        onClick={ handleShare }
+        className="share-btn"
+      >
+        {!isCopy ? (<img src={ share } alt="share" />) : 'Link copied!' }
+      </button>
       <button type="button" data-testid="favorite-btn">Favorite</button>
       <StartRecipe />
     </div>

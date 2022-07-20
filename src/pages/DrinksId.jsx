@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
+import copy from 'clipboard-copy';
 import StartRecipe from '../components/StartRecipe';
 import Context from '../context/context';
+import share from '../images/shareIcon.svg';
 
 // import { Container } from './styles';
 
 function DrinkId() {
   const { setFetchIdDrink, fetchIdDrink } = useContext(Context);
   const { id } = useParams();
+  const history = useHistory();
+  const [isCopy, setCopy] = useState(false);
 
   const [ingredientsArray, setIngredients] = useState([]);
   const [amountArray, setAmmount] = useState([]);
@@ -49,6 +53,11 @@ function DrinkId() {
     handleFetchIdDrink();
     recommendationFetch();
   }, []);
+
+  const handleShare = () => {
+    copy(`http://localhost:3000${history.location.pathname}`);
+    setCopy(true);
+  };
   return (
     <div>
       <div>
@@ -81,15 +90,26 @@ function DrinkId() {
                     data-testid={ `${i}-card-img` }
                     className="recommendationImage"
                   />
-                  <h2 data-testid={ `${i}-recomendation-title` }>{item.strMeal}</h2>
+                  <h2 data-testid={ `${i}-recomendation-title` }>
+                    {item.strMeal}
+                  </h2>
                 </div>
               </Link>
             </div>
           ))}
         </div>
       </div>
-      <button type="button" data-testid="share-btn">Share</button>
-      <button type="button" data-testid="favorite-btn">Favorite</button>
+      <button
+        type="button"
+        data-testid="share-btn"
+        onClick={ handleShare }
+        className="share-btn"
+      >
+        {!isCopy ? (<img src={ share } alt="share" />) : 'Link copied!' }
+      </button>
+      <button type="button" data-testid="favorite-btn">
+        Favorite
+      </button>
       <StartRecipe />
     </div>
   );
