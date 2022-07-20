@@ -88,6 +88,8 @@ function DrinkId() {
           ))}
         </div>
       </div>
+      <button type="button" data-testid="share-btn">Share</button>
+      <button type="button" data-testid="favorite-btn">Favorite</button>
       <StartRecipe />
     </div>
   );
