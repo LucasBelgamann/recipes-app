@@ -4,7 +4,7 @@ O app de receitas é um projeto onde foi contruido um aplicativo de receitas, qu
 
 # Link do projeto
 
-https://project-trivia-three.vercel.app/
+https://recipes-app-project-umber.vercel.app/
 
 # Como foi desenvolvimento
 
